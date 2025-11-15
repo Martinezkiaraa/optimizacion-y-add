@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1763146084.89314 "/Users/martinamarino/Downloads/Métodos-TP2/informe.tex" "informe.pdf" "informe" 1763146085.36507 0
-  "/Users/martinamarino/Downloads/Métodos-TP2/informe.tex" 1763146084.2422 47266 7b0fb23f06f800e1dd5ce2eb6a78e212 ""
+["pdflatex"] 1763172886.5296 "/Users/martinamarino/Downloads/Métodos - TP2/optimizacion-y-add/informe.tex" "informe.pdf" "informe" 1763172887.21017 0
+  "/Users/martinamarino/Downloads/Métodos - TP2/optimizacion-y-add/informe.tex" 1763172886.33916 46128 d60c20f6759656bda765aaf37e26747a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -126,9 +126,15 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1762946290 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1762946274 3345742 3b5954f87823858694468b781e90cd2b ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "informe.aux" 1763146085.32123 4914 fe034029f9fea281730047fb3fc589c7 "pdflatex"
-  "informe.out" 1763146085.32231 7137 bb70cb8813ad0b601d49eb99d0a1919b "pdflatex"
-  "informe.toc" 1763146085.32247 3198 3a3522071fafdb85c8b0ffa9532b1caf "pdflatex"
+  "curva_ajustada.png" 1763170638.70668 28117 6587260840104b2718c23f8ac7e5e318 ""
+  "curvas_de_nivel.png" 1763170664.2234 124332 202091601744ccc32c8f6dac8ed5d57c ""
+  "eta_dg.png" 1763170700.15517 27523 96826af03e0b90a651d89d008ab2ec4a ""
+  "función_Q(b1,b2).png" 1763170679.45858 164930 d8db3bd534b25ad06281ea8d9220e6a5 ""
+  "histograma.png" 1763171193.25784 18800 1875fbcc2c8363e927017d787bc6f7f9 ""
+  "informe.aux" 1763172887.16404 6774 a687f10e052ce3a6e76d11e0ede78065 "pdflatex"
+  "informe.out" 1763172887.16511 7137 bb70cb8813ad0b601d49eb99d0a1919b "pdflatex"
+  "informe.toc" 1763172887.16528 3199 69a857385837d10d168a6a4a5dea58e1 "pdflatex"
+  "predicción_vs_real.png" 1763171184.19674 42281 8ed61ecf7e67c7d500093714c75692e3 ""
   (generated)
   "informe.aux"
   "informe.log"

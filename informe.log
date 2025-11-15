@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.12)  14 NOV 2025 15:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.12)  14 NOV 2025 23:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/martinamarino/Downloads/Métodos-TP2/informe.tex
-(/Users/martinamarino/Downloads/Métodos-TP2/informe.tex
+**"/Users/martinamarino/Downloads/Métodos - TP2/optimizacion-y-add/informe.tex"
+(/Users/martinamarino/Downloads/Métodos - TP2/optimizacion-y-add/informe.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -444,10 +444,21 @@ l.45 \newpage
 [4]
 
 [5]
+<curva_ajustada.png, id=184, 498.663pt x 317.988pt>
+File: curva_ajustada.png Graphic file (type png)
+<use curva_ajustada.png>
+Package pdftex.def Info: curva_ajustada.png  used on input line 425.
+(pdftex.def)             Requested size: 318.66948pt x 203.21078pt.
+
 
 [6]
 
-[7]
+[7
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.498 \]
+         <./curva_ajustada.png>]
 
 [8]
 
@@ -458,16 +469,49 @@ l.45 \newpage
 [11]
 
 [12]
+<curvas_de_nivel.png, id=220, 469.0323pt x 342.5598pt>
+File: curvas_de_nivel.png Graphic file (type png)
+<use curvas_de_nivel.png>
+Package pdftex.def Info: curvas_de_nivel.png  used on input line 849.
+(pdftex.def)             Requested size: 318.66948pt x 232.75462pt.
+
 
 [13]
+<función_Q(b1,b2).png, id=226, 358.4592pt x 366.4089pt>
+File: función_Q(b1,b2).png Graphic file (type png)
+<use función_Q(b1,b2).png>
+Package pdftex.def Info: función_Q(b1,b2).png  used on input line 856.
+(pdftex.def)             Requested size: 318.66948pt x 325.75066pt.
 
-[14]
+
+[14
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.865 P
+       artiendo de la expresión
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.865 P
+       artiendo de la expresión <./curvas_de_nivel.png> <./función_Q(b1,b2).png>]
 
 [15]
 
 [16]
+<eta_dg.png, id=243, 498.663pt x 354.123pt>
+File: eta_dg.png Graphic file (type png)
+<use eta_dg.png>
+Package pdftex.def Info: eta_dg.png  used on input line 1030.
+(pdftex.def)             Requested size: 318.66948pt x 226.30292pt.
 
-[17]
+
+[17
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1051 \end{center}
+                    <./eta_dg.png>]
 
 [18]
 
@@ -475,14 +519,49 @@ l.45 \newpage
 
 [20]
 
-[21
+[21]
+
+[22]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[23]
+<predicción_vs_real.png, id=277, 425.6703pt x 354.123pt>
+File: predicción_vs_real.png Graphic file (type png)
+<use predicción_vs_real.png>
+Package pdftex.def Info: predicción_vs_real.png  used on input line 1413.
+(pdftex.def)             Requested size: 386.96027pt x 321.9282pt.
+<histograma.png, id=278, 426.393pt x 281.853pt>
+File: histograma.png Graphic file (type png)
+<use histograma.png>
+Package pdftex.def Info: histograma.png  used on input line 1422.
+(pdftex.def)             Requested size: 364.19667pt x 240.74597pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[24
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1374 
-       ]
+l.1428 
+       
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1428 
+        <./predicción_vs_real.png>]
 
-[22] (./informe.aux
+[25
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1433 \end{document}
+                      <./histograma.png>] (./informe.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -494,18 +573,18 @@ Package rerunfilecheck Info: File `informe.out' has not changed.
 (rerunfilecheck)             Checksum: BB70CB8813AD0B601D49EB99D0A1919B;7137.
  ) 
 Here is how much of TeX's memory you used:
- 12374 strings out of 473190
- 191934 string characters out of 5715799
- 620671 words of memory out of 5000000
- 35397 multiletter control sequences out of 15000+600000
+ 12437 strings out of 473190
+ 193345 string characters out of 5715799
+ 620213 words of memory out of 5000000
+ 35451 multiletter control sequences out of 15000+600000
  576376 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,79p,541b,493s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,79p,560b,526s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on informe.pdf (23 pages, 251308 bytes).
+Output written on informe.pdf (26 pages, 560168 bytes).
 PDF statistics:
- 355 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
- 209 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 390 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

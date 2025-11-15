@@ -281,9 +281,9 @@ Por lo tanto,
 \Rightarrow\quad
 (A^{\mathsf T}A)^{-1} \approx
 \begin{bmatrix}
-0.8857 & -0.7714 & 0.1429\\
--0.7714 & 1.2429 & -0.2857\\
-0.1429 & -0.2857 & 0.0714
+0.886 & -0.771 & 0.143\\
+-0.771 & 1.243 & -0.286\\
+0.143 & -0.286 & 0.071
 \end{bmatrix}
 \]
 
@@ -325,21 +325,11 @@ A^{\mathsf T} y \;=\;
 13.9 \\[2pt] 36.4 \\[2pt] 117.6
 \end{bmatrix}
 \renewcommand{\arraystretch}{1}
-=
-\boxed{
-\renewcommand{\arraystretch}{2.2}
-\begin{bmatrix}
-\dfrac{361}{350} \\[6pt]
-\dfrac{321}{350} \\[6pt]
--\dfrac{1}{70}
-\end{bmatrix}
-\renewcommand{\arraystretch}{1}
-}
 \;\approx\;
 \boxed{
 \renewcommand{\arraystretch}{2.2}
 \begin{bmatrix}
-1.0314 \\ 0.9171 \\ -0.0143
+1.031 \\ 0.917 \\ -0.014
 \end{bmatrix}
 \renewcommand{\arraystretch}{1}
 }.
@@ -350,10 +340,8 @@ A^{\mathsf T} y \;=\;
 Reemplazando los valores obtenidos, el modelo cuadrático ajustado por mínimos cuadrados es:
 
 \[
-\hat y \;=\; 1{,}0314 \;+\; 0{,}9171\,x \;-\; 0{,}0143\,x^2
+\hat y \;=\; 1{,}031 \;+\; 0{,}917\,x \;-\; 0{,}014\,x^2.
 \]
-
-(redondeado a cuatro decimales; en forma exacta: \(\hat y = \tfrac{361}{350} + \tfrac{321}{350}x - \tfrac{1}{70}x^2\)).
 
 \subsubsection*{Justificación}
 
@@ -369,7 +357,7 @@ A partir del sistema normal obtenido en el apartado anterior:
 (A^{\mathsf T}A)\,\beta = A^{\mathsf T}y,
 \]
 
-implementamos en \texttt{Python} una función que resuelve este sistema utilizando el método de eliminación Gaussiana con pivoteo parcial. 
+implementamos en \texttt{Python} una función que resuelve este sistema utilizando el método de eliminación por Gauss. 
 
 Para ello definimos primero una rutina genérica que, dada una matriz \(M\) y un vector \(b\), resuelve el sistema lineal
 
@@ -406,9 +394,9 @@ Al ejecutar el código con los datos del enunciado se obtiene:
 \[
 \beta \approx
 \begin{bmatrix}
-1.0314\\[2pt]
-0.9171\\[2pt]
--0.0143
+1.031\\[2pt]
+0.917\\[2pt]
+-0.014
 \end{bmatrix},
 \]
 
@@ -424,21 +412,20 @@ Con estos valores construimos la función estimada
 \hat{y}(x) = \beta_0 + \beta_1 x + \beta_2 x^2,
 \]
 
-y la evaluamos sobre un conjunto denso de puntos en el intervalo \([0,4]\), lo que permite representar la curva ajustada de manera suave y continua.
+y la evaluamos sobre un conjunto denso de puntos.
 
 Simultáneamente, graficamos los datos originales \((x_i, y_i)\) provistos en la consigna.
 
-El resultado se muestra en la siguiente figura, donde se observa que la curva cuadrática obtenida por mínimos cuadrados sigue adecuadamente la tendencia general de los datos, pasando muy cerca de todos los puntos y confirmando que el modelo captura bien la relación entre \(x\) e \(y\).
+El resultado se muestra en la siguiente figura, donde se observa que la curva cuadrática obtenida por mínimos cuadrados sigue la tendencia general de los datos, pasando muy cerca de todos los puntos y confirmando que el modelo captura bien la relación entre \(x\) e \(y\).
 
 Este gráfico permite verificar visualmente la calidad del ajuste y complementa el análisis algebraico desarrollado en los apartados anteriores.
 
-% Figura preparada para 1.c - curva_ajustada
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.7\linewidth]{curva_ajustada}
-%     \caption{Datos originales y curva cuadrática ajustada.}
-%     \label{fig:curva_ajustada}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{curva_ajustada}
+    \caption{Datos originales y curva cuadrática ajustada.}
+    \label{fig:curva_ajustada}
+\end{figure}
 
 \subsection{\texorpdfstring{\textbf{Cálculo del error cuadrático medio (MSE)}}{\textbf{Cálculo del error cuadrático medio (MSE)}}}
 
@@ -448,20 +435,75 @@ Una vez obtenidos los coeficientes \(\beta\) y la correspondiente curva ajustada
 \text{MSE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)^2 .
 \]
 
-Este valor mide la discrepancia promedio entre los datos observados \(y_i\) y los valores estimados \(\hat{y}_i\). Un MSE pequeño indica que el modelo logra una buena aproximación a los datos.
+Dado que
+\[
+A =
+\begin{bmatrix}
+1 & 0 & 0 \\
+1 & 1 & 1 \\
+1 & 2 & 4 \\
+1 & 3 & 9 \\
+1 & 4 & 16
+\end{bmatrix},
+\qquad
+\beta =
+\begin{bmatrix}
+1.031 \\[2pt]
+0.917 \\[2pt]
+-0.014
+\end{bmatrix},
+\]
 
-En nuestro caso, utilizando el vector de valores observados \(y\) y los valores estimados \(\hat{y} = A\beta\), se obtiene:
+la predicción se obtiene como
+
+\[
+\hat{y} = A\beta
+=
+\begin{bmatrix}
+1 & 0 & 0 \\
+1 & 1 & 1 \\
+1 & 2 & 4 \\
+1 & 3 & 9 \\
+1 & 4 & 16
+\end{bmatrix}
+\!
+\begin{bmatrix}
+1.031 \\[2pt]
+0.917 \\[2pt]
+-0.014
+\end{bmatrix}
+=
+\begin{bmatrix}
+1.031 \\
+1.934 \\
+2.809 \\
+3.656 \\
+4.475
+\end{bmatrix}.
+\]
+
+Estos valores corresponden a la evaluación exacta del modelo cuadrático ajustado.  
+
+Debido al redondeo y truncamiento numérico en la computadora, el resultado impreso por el código es:
 
 \[
 \hat{y} \approx
 \begin{bmatrix}
-1.0314\\[2pt]
-1.9343\\[2pt]
-2.8086\\[2pt]
-3.6543\\[2pt]
-4.4714
-\end{bmatrix},
-\qquad
+1.031 \\[2pt]
+1.934 \\[2pt]
+2.809 \\[2pt]
+3.654 \\[2pt]
+4.471
+\end{bmatrix}.
+\]
+
+El MSE mide la discrepancia promedio entre los datos observados \(y_i\) y los valores estimados \(\hat{y}_i\). 
+
+Un MSE pequeño indica que el modelo logra una buena aproximación a los datos.
+
+En nuestro caso, utilizando el vector de valores observados \(y\) y los valores estimados \(\hat{y}\), se obtiene:
+
+\[
 \text{MSE} \approx 0.001829.
 \]
 
@@ -510,16 +552,16 @@ Los autovalores \(\lambda_i\) de \(A^{\mathsf T}A\) son las raíces de
 \(\det(A^{\mathsf T}A-\lambda I)=0\):
 
 \[
-\lambda_1=0.52374073,\qquad
-\lambda_2=3.47148725,\qquad
-\lambda_3=385.00477201.
+\lambda_1=0.524,\qquad
+\lambda_2=3.471,\qquad
+\lambda_3=385.005.
 \]
 
 Entonces, los valores singulares son:
 
 \[
 \sigma_i=\sqrt{\lambda_i} \quad\Rightarrow\quad
-\sigma_1=19.62153847,\;\;\sigma_2=1.86319276,\;\;\sigma_3=0.72369934.
+\sigma_1=19.622,\;\;\sigma_2=1.863,\;\;\sigma_3=0.724.
 \]
 
 Luego, la \(\Sigma\) completa es:
@@ -527,9 +569,9 @@ Luego, la \(\Sigma\) completa es:
 \[
 \Sigma=
 \begin{bmatrix}
-19.621538 & 0 & 0 \\
-0 & 1.863193 & 0 \\
-0 & 0 & 0.723699 \\
+19.622 & 0 & 0 \\
+0 & 1.863 & 0 \\
+0 & 0 & 0.724 \\
 0 & 0 & 0 \\
 0 & 0 & 0
 \end{bmatrix}
@@ -537,18 +579,16 @@ Luego, la \(\Sigma\) completa es:
 
 \textbf{Autovectores:}
 
-Los vectores propios normalizados de \(A^{\mathsf T}A\) asociados a \(\lambda_3,\lambda_2,\lambda_1\)
-
-(ordenados para que coincidan con \(\sigma_1\ge\sigma_2\ge\sigma_3\)) forman las columnas de \(V\).
+Los vectores propios normalizados de \(A^{\mathsf T}A\) asociados a \(\lambda_3,\lambda_2,\lambda_1\) (ordenados para que coincidan con \(\sigma_1\ge\sigma_2\ge\sigma_3\)) forman las columnas de \(V\).
 
 Numéricamente,
 
 \[
 V=
 \begin{bmatrix}
--0.082847 & \phantom{-}0.789492 & \phantom{-}0.608144\\
--0.272364 & \phantom{-}0.569071 & -0.775871\\
--0.958621 & -0.229915 & \phantom{-}0.167883
+-0.083 & \phantom{-}0.789 & \phantom{-}0.608\\
+-0.272 & \phantom{-}0.569 & -0.776\\
+-0.959 & -0.23 & \phantom{-}0.168
 \end{bmatrix}
 \]
 
@@ -563,11 +603,11 @@ Y así obtenemos la base ortonormal numérica:
 \[
 U=
 \begin{bmatrix}
--0.004222 & \phantom{-}0.423731 & \phantom{-}0.840327 & -0.025761 & -0.337079\\
--0.066959 & \phantom{-}0.605760 & \phantom{-}0.000215 & \phantom{-}0.280919 & \phantom{-}0.741388\\
--0.227406 & \phantom{-}0.540992 & -0.375936 & -0.688191 & -0.201691\\
--0.485565 & \phantom{-}0.229427 & -0.288129 & \phantom{-}0.636669 & -0.472466\\
--0.841434 & -0.328934 & \phantom{-}0.263637 & -0.203636 & \phantom{-}0.269848
+-0.004 & \phantom{-}0.424 & \phantom{-}0.840 & -0.026 & -0.337\\
+-0.067 & \phantom{-}0.606 & \phantom{-}0.000 & \phantom{-}0.281 & \phantom{-}0.741\\
+-0.227 & \phantom{-}0.541 & -0.376 & -0.688 & -0.202\\
+-0.486 & \phantom{-}0.229 & -0.288 & \phantom{-}0.637 & -0.472\\
+-0.841 & -0.329 & \phantom{-}0.264 & -0.204 & \phantom{-}0.27
 \end{bmatrix}
 \]
 
@@ -584,13 +624,13 @@ Con las tres matrices anteriores se verifica:
 Sea
 
 \[
-U =
+U=
 \begin{bmatrix}
--0.004222 &  0.423731 &  0.840327 & -0.025761 & -0.337079\\
--0.066959 &  0.605760 &  0.000215 &  0.280919 &  0.741388\\
--0.227406 &  0.540992 & -0.375936 & -0.688191 & -0.201691\\
--0.485565 &  0.229427 & -0.288129 &  0.636669 & -0.472466\\
--0.841434 & -0.328934 &  0.263637 & -0.203636 &  0.269848
+-0.004 & \phantom{-}0.424 & \phantom{-}0.840 & -0.026 & -0.337\\
+-0.067 & \phantom{-}0.606 & \phantom{-}0.000 & \phantom{-}0.281 & \phantom{-}0.741\\
+-0.227 & \phantom{-}0.541 & -0.376 & -0.688 & -0.202\\
+-0.486 & \phantom{-}0.229 & -0.288 & \phantom{-}0.637 & -0.472\\
+-0.841 & -0.329 & \phantom{-}0.264 & -0.204 & \phantom{-}0.27
 \end{bmatrix}
 \]
 
@@ -601,35 +641,35 @@ u_i = \text{columna } i \text{ de } U.
 Verificamos que \(u_i^\mathsf{T} u_j \approx 0\) para \(i\neq j\) realizando las sumas término a término (5 términos por producto interno):
 
 \begin{align*}
-u_1\!\cdot\! u_2 &= (-0.004222)(0.423731)+(-0.066959)(0.605760)+(-0.227406)(0.540992)\\
-&\quad+(-0.485565)(0.229427)+(-0.841434)(-0.328934)
+u_1\!\cdot\! u_2 &= (-0.004)(0.424)+(-0.067)(0.606)+(-0.227)(0.541)\\
+&\quad+(-0.486)(0.229)+(-0.841)(-0.329)
 = -3.73\times 10^{-7}\approx 0.\\[6pt]
-u_1\!\cdot\! u_3 &= (-0.004222)(0.840327)+(-0.066959)(0.000215)+(-0.227406)(-0.375936)\\
-&\quad+(-0.485565)(-0.288129)+(-0.841434)(0.263637)
+u_1\!\cdot\! u_3 &= (-0.004)(0.840)+(-0.067)(0.000)+(-0.227)(-0.376)\\
+&\quad+(-0.486)(-0.288)+(-0.841)(0.264)
 = 6.77\times 10^{-8}\approx 0.\\[6pt]
-u_1\!\cdot\! u_4 &= (-0.004222)(-0.025761)+(-0.066959)(0.280919)+(-0.227406)(-0.688191)\\
-&\quad+(-0.485565)(0.636669)+(-0.841434)(-0.203636)
+u_1\!\cdot\! u_4 &= (-0.004)(-0.026)+(-0.067)(0.281)+(-0.227)(-0.688)\\
+&\quad+(-0.486)(0.637)+(-0.841)(-0.204)
 = -4.59\times 10^{-7}\approx 0.\\[6pt]
-u_1\!\cdot\! u_5 &= (-0.004222)(-0.337079)+(-0.066959)(0.741388)+(-0.227406)(-0.201691)\\
-&\quad+(-0.485565)(-0.472466)+(-0.841434)(0.269848)
+u_1\!\cdot\! u_5 &= (-0.004)(-0.337)+(-0.067)(0.741)+(-0.227)(-0.202)\\
+&\quad+(-0.486)(-0.472)+(-0.841)(0.27)
 = -3.67\times 10^{-8}\approx 0.\\[10pt]
-u_2\!\cdot\! u_3 &= (0.423731)(0.840327)+(0.605760)(0.000215)+(0.540992)(-0.375936)\\
-&\quad+(0.229427)(-0.288129)+(-0.328934)(0.263637)
+u_2\!\cdot\! u_3 &= (0.424)(0.840)+(0.606)(0.000)+(0.541)(-0.376)\\
+&\quad+(0.229)(-0.288)+(-0.329)(0.264)
 = 7.25\times 10^{-7}\approx 0.\\[6pt]
-u_2\!\cdot\! u_4 &= (0.423731)(-0.025761)+(0.605760)(0.280919)+(0.540992)(-0.688191)\\
-&\quad+(0.229427)(0.636669)+(-0.328934)(-0.203636)
+u_2\!\cdot\! u_4 &= (0.424)(-0.026)+(0.606)(0.281)+(0.541)(-0.688)\\
+&\quad+(0.229)(0.637)+(-0.329)(-0.204)
 = -2.04\times 10^{-7}\approx 0.\\[6pt]
-u_2\!\cdot\! u_5 &= (0.423731)(-0.337079)+(0.605760)(0.741388)+(0.540992)(-0.201691)\\
-&\quad+(0.229427)(-0.472466)+(-0.328934)(0.269848)
+u_2\!\cdot\! u_5 &= (0.424)(-0.337)+(0.606)(0.741)+(0.541)(-0.202)\\
+&\quad+(0.229)(-0.472)+(-0.329)(0.27)
 = 5.17\times 10^{-7}\approx 0.\\[10pt]
-u_3\!\cdot\! u_4 &= (0.840327)(-0.025761)+(0.000215)(0.280919)+(-0.375936)(-0.688191)\\
-&\quad+(-0.288129)(0.636669)+(0.263637)(-0.203636)
+u_3\!\cdot\! u_4 &= (0.840)(-0.026)+(0.000)(0.281)+(-0.376)(-0.688)\\
+&\quad+(-0.288)(0.637)+(0.264)(-0.204)
 = -2.81\times 10^{-7}\approx 0.\\[6pt]
-u_3\!\cdot\! u_5 &= (0.840327)(-0.337079)+(0.000215)(0.741388)+(-0.375936)(-0.201691)\\
-&\quad+(-0.288129)(-0.472466)+(0.263637)(0.269848)
+u_3\!\cdot\! u_5 &= (0.840)(-0.337)+(0.000)(0.741)+(-0.376)(-0.202)\\
+&\quad+(-0.288)(-0.472)+(0.264)(0.27)
 = -1.205\times 10^{-6}\approx 0.\\[6pt]
-u_4\!\cdot\! u_5 &= (-0.025761)(-0.337079)+(0.280919)(0.741388)+(-0.688191)(-0.201691)\\
-&\quad+(0.636669)(-0.472466)+(-0.203636)(0.269848)
+u_4\!\cdot\! u_5 &= (-0.026)(-0.337)+(0.281)(0.741)+(-0.688)(-0.202)\\
+&\quad+(0.637)(-0.472)+(-0.204)(0.27)
 = -9.83\times 10^{-7}\approx 0.
 \end{align*}
 
@@ -661,9 +701,9 @@ En este problema, ambos métodos producen exactamente los mismos coeficientes:
 \beta_{\text{SVD}}
 \;=\;
 \begin{bmatrix}
-1.031429\\[3pt]
-0.917143\\[3pt]
--0.014286
+1.031\\[3pt]
+0.917\\[3pt]
+-0.014
 \end{bmatrix}.
 \]
 
@@ -672,11 +712,11 @@ Las predicciones coinciden punto por punto:
 \[
 \hat{y} =
 \begin{bmatrix}
-1.031429\\
-1.934286\\
-2.808571\\
-3.654286\\
-4.471429
+1.031\\
+1.934\\
+2.809\\
+3.654\\
+4.471
 \end{bmatrix}.
 \]
 
@@ -687,7 +727,7 @@ El error cuadrático medio es idéntico en ambos casos:
 \;=\;
 \text{MSE}_{\text{SVD}}
 \;=\;
-0.00182857.
+0.002.
 \]
 
 Las diferencias relativas son prácticamente nulas:
@@ -745,15 +785,15 @@ resume esta relación: valores grandes de \(\kappa(A)\) indican fuerte desbalanc
 En nuestro caso, los valores singulares obtenidos fueron
 
 \[
-\sigma_1 \approx 19.6215, \qquad
-\sigma_2 \approx 1.8632, \qquad
-\sigma_3 \approx 0.7237,
+\sigma_1 \approx 19.622, \qquad
+\sigma_2 \approx 1.863, \qquad
+\sigma_3 \approx 0.724,
 \]
 
 de donde se obtiene
 
 \[
-\kappa(A) = \frac{19.6215}{0.7237} \approx 27.1.
+\kappa(A) = \frac{19.622}{0.724} \approx 27.1.
 \]
 
 Este valor indica un condicionamiento moderado.
@@ -778,14 +818,14 @@ Q(\beta) = \|A\beta - y\|^2
 
 \subsection{\texorpdfstring{\textbf{Gráfico de \(\boldsymbol{Q}\boldsymbol{(}\boldsymbol{\beta_1}\boldsymbol{,}\,\boldsymbol{\beta_2}\boldsymbol{)}\) para \(\boldsymbol{\beta_0}\) fijo}}{\textbf{Gráfico de Q(beta1,beta2) para beta0 fijo}}}
                                     
-Para visualizar la forma cuadrática \(Q(\beta)\) asociada al error, fijamos el valor del parámetro \(\beta_0\) en el valor obtenido por mínimos cuadrados en la sección anterior \(\beta_0 \approx 1{,}0314\), y consideramos \(Q\) como función de las variables \(\beta_1\) y \(\beta_2\):
+Para visualizar la forma cuadrática \(Q(\beta)\) asociada al error, fijamos el valor del parámetro \(\beta_0\) en el valor obtenido por mínimos cuadrados en la sección anterior \(\beta_0 \approx 1{,}031\), y consideramos \(Q\) como función de las variables \(\beta_1\) y \(\beta_2\):
 
 \[
 (\beta_1,\beta_2) \;\longmapsto\; Q(\beta_0,\beta_1,\beta_2)
 = \|A\beta - y\|^2.
 \]
 
-Numéricamente se genera una malla de valores \((\beta_1,\beta_2)\) en un rectángulo que contiene al punto óptimo \((\beta_1^*,\beta_2^*) \approx (0{,}9171,\,-0{,}0143)\), y para cada punto de la malla se evalúa \(Q(\beta_0,\beta_1,\beta_2)\).
+Numéricamente se genera una malla de valores \((\beta_1,\beta_2)\) en un rectángulo que contiene al punto óptimo \((\beta_1^*,\beta_2^*) \approx (0{,}917,\,-0{,}014)\), y para cada punto de la malla se evalúa \(Q(\beta_0,\beta_1,\beta_2)\).
 
 Con estos valores se construyen:
 
@@ -797,29 +837,26 @@ Con estos valores se construyen:
 En ambas representaciones se marca el punto
 
 \[
-(\beta_1^*,\beta_2^*) \approx (0{,}9171,\,-0{,}0143),
+(\beta_1^*,\beta_2^*) \approx (0{,}917,\,-0{,}014),
 \]
 
 correspondiente a los coeficientes obtenidos por mínimos cuadrados.
 
 Visualmente se observa que este punto coincide con el mínimo global de \(Q\) en el plano \((\beta_1,\beta_2)\), y que el error crece de manera suave y aproximadamente elíptica al alejarse de dicho punto, lo cual es consistente con la estructura cuadrática de la función de error.
 
-% Figuras preparadas para 3.a - "Q(b1, b2)_B0_fijo" y "función_Q(b1,b2)"
-% \begin{figure}[H]
-%     \centering
-%     % archivo sugerido: Q(b1, b2)_B0_fijo
-%     \includegraphics[width=0.7\linewidth]{Q_b1b2_B0_fijo}
-%     \caption{Curvas de nivel de $Q(\beta_1,\beta_2)$ con $\beta_0$ fijo.}
-%     \label{fig:Q_b1b2_B0_fijo}
-% \end{figure}
-%
-% \begin{figure}[H]
-%     \centering
-%     % archivo sugerido: función_Q(b1,b2)
-%     \includegraphics[width=0.7\linewidth]{funcion_Q_b1b2}
-%     \caption{Superficie de la función de error $Q(\beta_1,\beta_2)$ con $\beta_0$ fijo.}
-%     \label{fig:funcion_Q_b1b2}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=0.7\linewidth]{curvas_de_nivel.png}
+        \caption{Curvas de nivel de $Q(\beta_1,\beta_2)$ con $\beta_0$ fijo.}
+        \label{fig:Q_b1b2_B0_fijo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=0.7\linewidth]{función_Q(b1,b2).png}
+        \caption{Superficie de la función de error $Q(\beta_1,\beta_2)$ con $\beta_0$ fijo.}
+        \label{fig:funcion_Q_b1b2}
+\end{figure}
 
 \subsection{\texorpdfstring{\textbf{Convexidad de \(\boldsymbol{Q}\boldsymbol{(}\boldsymbol{\beta}\boldsymbol{)}\) y mínimo en la solución de mínimos cuadrados}}{\textbf{Convexidad de Q(beta) y mínimo en la solución de mínimos cuadrados}}}
 
@@ -929,14 +966,14 @@ El método converge al vector de parámetros:
 \[
 \beta_{\mathrm{GD}} =
 \begin{bmatrix}
-1.031429\\[3pt]
-0.917143\\[3pt]
--0.014286
+1.031\\[3pt]
+0.917\\[3pt]
+-0.014
 \end{bmatrix}
 \]
 
 \[
-\mathrm{MSE}_{\text{final}} = 0.00182857
+\mathrm{MSE}_{\text{final}} = 0.002
 \]
 
 \[
@@ -953,7 +990,7 @@ La solución obtenida coincide numéricamente con la calculada mediante ecuacion
 
 El uso del paso óptimo hace que el algoritmo sea eficiente y estable, evitando la necesidad de ajustar manualmente la tasa de aprendizaje.
 
-Dado que \(Q\) es una función cuadrática, el descenso por gradiente no solo converge al mínimo global, sino que lo hace de forma suave y predecible, reduciendo la norma del gradiente a niveles prácticamente nulos.  
+Dado que \(Q\) es una función cuadrática, el descenso por gradiente no solo converge al mínimo global, sino que lo hace de forma predecible, reduciendo la norma del gradiente a niveles prácticamente nulos.  
 
 \subsection{\texorpdfstring{\textbf{Experimentos con tasas de aprendizaje y tolerancias}}{\textbf{Experimentos con tasas de aprendizaje y tolerancias}}}
     
@@ -986,15 +1023,14 @@ Los resultados obtenidos fueron:
 
 Para \(\eta \le 10^{-3}\) el método converge correctamente al mismo mínimo obtenido anteriormente.
 
-Para valores mayores, el gradiente crece sin control (overflow numérico) y la iteración diverge, lo que se refleja en la aparición de valores \texttt{nan}. Esto ilustra la sensibilidad del descenso por gradiente a la elección de la tasa de aprendizaje.
+Para valores mayores, el gradiente crece sin control y la iteración diverge, lo que se refleja en la aparición de valores \texttt{nan}. Esto ilustra la sensibilidad del descenso por gradiente a la elección de la tasa de aprendizaje.
 
-% Figura preparada para 4.b - "MSE_DG"
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.7\linewidth]{MSE_DG}
-%     \caption{Evolución del MSE en función de las iteraciones del descenso por gradiente.}
-%     \label{fig:MSE_DG}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=0.7\linewidth]{eta_dg.png}
+        \caption{Evolución del MSE en función de las iteraciones del descenso por gradiente.}
+        \label{fig:MSE_DG}
+\end{figure}
 
 \textbf{Barrido de tolerancias.}
 
@@ -1022,11 +1058,11 @@ En el caso extremo \(\text{tol}=10^{-14}\), el algoritmo alcanza la cota máxima
 
 Se observa que el método converge siempre al mismo vector de parámetros 
 
-\(\beta \approx [1.0314,\,0.9171,\,-0.0143]\), pero el número de iteraciones depende fuertemente de la elección de \(\eta\) y de la tolerancia.
+\(\beta \approx [1.031,\,0.917,\,-0.014]\), pero el número de iteraciones depende fuertemente de la elección de \(\eta\) y de la tolerancia.
 
-Una tasa de aprendizaje demasiado grande produce inestabilidad numérica (divergencia), mientras que una tolerancia excesivamente exigente solo incrementa el costo computacional sin mejorar de manera apreciable la calidad del ajuste.
+Una tasa de aprendizaje demasiado grande produce inestabilidad numérica, mientras que una tolerancia excesivamente exigente solo incrementa el costo computacional sin mejorar de manera apreciable la calidad del ajuste.
 
-En contraste, el descenso por gradiente con paso óptimo ofrece un buen compromiso entre velocidad y precisión, convergente al mínimo global en un número moderado de iteraciones.
+En contraste, el descenso por gradiente con paso óptimo ofrece un buen trade-off entre velocidad y precisión, convergente al mínimo global en un número moderado de iteraciones.
 
 \subsection{\texorpdfstring{\textbf{(Opcional) Convergencia respecto de la solución por SVD}}{\textbf{(Opcional) Convergencia respecto de la solución por SVD}}}
     
@@ -1052,18 +1088,18 @@ Los tres procedimientos convergen al mismo vector de parámetros:
 =\beta_{\mathrm{GD}}
 \approx
 \begin{bmatrix}
-1.031429\\[2pt]
-0.917143\\[2pt]
--0.014286
+1.031\\[2pt]
+0.917\\[2pt]
+-0.014
 \end{bmatrix}.
 \]
 
-Los valores de MSE coinciden hasta redondeo de doble precisión:
+Los valores de MSE coinciden (hasta cierto redondeo):
 
 \[
-\mathrm{MSE}_{\mathrm{NE}} \approx 1.8285714\times 10^{-3},\quad
-\mathrm{MSE}_{\mathrm{SVD}} \approx 1.8285714\times 10^{-3},\quad
-\mathrm{MSE}_{\mathrm{GD}} \approx 1.8285714\times 10^{-3}.
+\mathrm{MSE}_{\mathrm{NE}} \approx 1.829\times 10^{-3},\quad
+\mathrm{MSE}_{\mathrm{SVD}} \approx 1.829\times 10^{-3},\quad
+\mathrm{MSE}_{\mathrm{GD}} \approx 1.829\times 10^{-3}.
 \]
 
 \textbf{Diferencias relativas:}
@@ -1114,9 +1150,9 @@ A\beta_{\mathrm{NE}} = A\beta_{\mathrm{SVD}} = A\beta_{\mathrm{GD}}
 }
 \]
 
-dentro de la tolerancia numérica del cómputo en doble precisión.
+dentro de la tolerancia numérica del redondeo de la computadora.
 
-Este resultado confirma que, al tratarse de una función cuadrática estrictamente convexa, los tres métodos —ecuaciones normales, SVD y descenso por gradiente con paso óptimo— encuentran exactamente el mismo mínimo global, tal como predice la teoría.
+Este resultado confirma que, al tratarse de una función cuadrática estrictamente convexa, los tres métodos (ecuaciones normales, SVD y descenso por gradiente con paso óptimo) encuentran exactamente el mismo mínimo global, tal como predice la teoría.
 
 % ==========================
 % SECCIÓN 5
@@ -1126,11 +1162,11 @@ Este resultado confirma que, al tratarse de una función cuadrática estrictamen
 
 \subsection{\texorpdfstring{\textbf{Relación entre los distintos métodos de resolución}}{\textbf{Relación entre los distintos métodos de resolución}}}
 
-Los tres métodos analizados —ecuaciones normales, descomposición en valores singulares (SVD) y descenso por gradiente— abordan el mismo problema de mínimos cuadrados, pero lo hacen desde perspectivas conceptuales y numéricas diferentes. A pesar de esto, cuando la matriz de diseño \(A\) posee rango completo, los tres procedimientos convergen al mismo vector de parámetros \(\beta^{*}\), que minimiza la función de error \(Q(\beta)=\|A\beta - y\|^{2}\).
+Los tres métodos analizados (ecuaciones normales, descomposición en valores singulares (SVD) y descenso por gradiente) abordan el mismo problema de mínimos cuadrados, pero lo hacen desde perspectivas conceptuales y numéricas diferentes. A pesar de esto, cuando la matriz de diseño \(A\) posee rango completo, los tres procedimientos convergen al mismo vector de parámetros \(\beta^{*}\), que minimiza la función de error \(Q(\beta)=\|A\beta - y\|^{2}\).
 
 \textbf{Ecuaciones normales:}
 
-Constituyen el enfoque algebraico directo: se obtiene el minimizador imponiendo la condición \(\nabla Q(\beta)=0\), lo cual produce el sistema lineal  \((A^{\mathsf T}A)\beta = A^{\mathsf T}y\).
+Se obtiene el minimizador imponiendo la condición \(\nabla Q(\beta)=0\), lo cual produce el sistema lineal  \((A^{\mathsf T}A)\beta = A^{\mathsf T}y\).
 
 Este método es eficiente para matrices pequeñas, pero su estabilidad numérica depende del condicionamiento de \(A^{\mathsf T}A\).
 
@@ -1138,7 +1174,7 @@ Si las columnas de \(A\) son casi colineales, el sistema puede volverse inestabl
 
 \textbf{SVD:}
 
-La descomposición \(A=U\Sigma V^{\mathsf T}\) proporciona una forma numéricamente robusta de resolver problemas de mínimos cuadrados, ya que la pseudo–inversa \(A^{+}\) se construye como \(A^{+}=V\Sigma^{+}U^{\mathsf T}\).
+La descomposición \(A=U\Sigma V^{\mathsf T}\) proporciona una forma numéricamente robusta de resolver problemas de mínimos cuadrados, ya que \(A^{+}=V\Sigma^{+}U^{\mathsf T}\).
 
 El SVD separa las direcciones principales de variación, permitiendo detectar explícitamente la presencia de valores singulares pequeños, responsables del mal condicionamiento.
 
@@ -1154,7 +1190,7 @@ Para funciones cuadráticas como la estudiada, el método converge al mínimo gl
 
 Si bien puede ser menos eficiente para problemas pequeños, es fundamental en contextos donde \(A\) es muy grande o dispersa, donde factorizar o invertir matrices resulta impracticable.
 
-En esos casos, el descenso por gradiente (o variantes como gradiente estocástico) es el método estándar.
+En esos casos, el descenso por gradiente es el método estándar.
 
 \textbf{Conclusión:}
 
@@ -1191,9 +1227,9 @@ Ajustando por ecuaciones normales, se obtienen:
 \[
 \beta^{(2)} =
 \begin{bmatrix}
-1.031429\\
-0.917143\\
--0.014286
+1.032\\
+0.917\\
+-0.014
 \end{bmatrix},
 \qquad
 \mathrm{MSE}^{(2)}_{\mathrm{train}} = 1.83\times 10^{-3},
@@ -1202,10 +1238,10 @@ Ajustando por ecuaciones normales, se obtienen:
 \[
 \beta^{(3)} =
 \begin{bmatrix}
-1.001429\\
-1.132143\\
--0.164286\\
-0.025000
+1.001\\
+1.132\\
+-0.164\\
+0.025
 \end{bmatrix},
 \qquad
 \mathrm{MSE}^{(3)}_{\mathrm{train}} = 2.86\times 10^{-5}.
@@ -1213,7 +1249,7 @@ Ajustando por ecuaciones normales, se obtienen:
 
 El modelo cúbico logra un error de entrenamiento mucho menor, debido a su mayor flexibilidad: posee un parámetro adicional y es capaz de ajustarse casi exactamente a los cinco puntos disponibles.
 
-\textbf{Efecto del ruido: evaluación fuera de la muestra:}
+\textbf{Efecto del ruido - evaluación fuera de la muestra:}
 
 Para estudiar el impacto del ruido, se tomó como “verdad subyacente” el modelo cuadrático ajustado y se generaron datos perturbados de la forma:
 
@@ -1232,10 +1268,10 @@ Se realizaron 500 experimentos para cada nivel de ruido \(\sigma\).
 \hline
 \(\sigma\) & RMSE test (cuadrático) & RMSE test (cúbico) \\
 \hline
-0.02 & 0.0125 & 0.0152 \\
-0.05 & 0.0314 & 0.0375 \\
-0.10 & 0.0622 & 0.0747 \\
-0.20 & 0.1221 & 0.1488 \\
+0.02 & 0.013 & 0.015 \\
+0.05 & 0.031 & 0.038 \\
+0.10 & 0.062 & 0.075 \\
+0.20 & 0.122 & 0.149 \\
 \hline
 \end{tabular}
 \end{center}
@@ -1244,7 +1280,7 @@ Se realizaron 500 experimentos para cada nivel de ruido \(\sigma\).
 
 Mientras que el modelo cúbico reduce fuertemente el error de entrenamiento (sobreajuste deliberado a los datos), su desempeño fuera de la muestra se deteriora cuando existe ruido: el RMSE de test es sistemáticamente mayor que el del modelo cuadrático para todos los valores de \(\sigma\).
 
-Esto indica que el término cúbico captura variaciones espurias generadas por el ruido (\textit{overfitting}).
+Esto indica que el término cúbico captura variaciones generadas por el ruido.
 
 En contraste, el modelo cuadrático presenta un error in--sample algo mayor, pero obtiene un RMSE de test consistentemente menor, lo que refleja una mejor capacidad de generalización.
 
@@ -1255,7 +1291,7 @@ Este comportamiento ilustra el clásico compromiso entre sesgo y varianza:
     \item el modelo cuadrático tiene mayor sesgo pero menor varianza.
 \end{itemize}
 
-En presencia de ruido, la menor varianza del modelo cuadrático conduce a un desempeño superior sobre datos no vistos.
+En presencia de ruido, la menor varianza del modelo cuadrático conduce a un desempeño superior sobre datos no vistos (datos de testeo, que no son con los que se entrenó)
 
 % ==========================
 % SECCIÓN 6
@@ -1280,13 +1316,13 @@ Nuestro objetivo es construir un modelo lineal que permita estimar el salario ut
 
 \subsection{\textbf{Preprocesamiento y formulación matricial}}
 
-Partimos de las variables numéricas (\texttt{Age}, \texttt{Years\_of\_experience}) y de las variables categóricas (\texttt{Gender}, \texttt{Education\_level}, \texttt{Job\_title}). Para el tratamiento de variables categóricas empleamos \emph{one-hot encoding}, obteniendo una matriz de diseño
+Partimos de las variables numéricas (\texttt{Age}, \texttt{Years\_of\_experience}) y de las variables categóricas (\texttt{Gender}, \texttt{Education\_level}, \texttt{Job\_title}). Tratamos las variables categóricas, obteniendo una matriz de diseño
 
 \[
 X \in \mathbb{R}^{n \times p},
 \]
 
-donde cada columna representa una característica numérica estandarizada o una variable dummy.
+donde cada columna representa una característica numérica estandarizada o una variable binaria indicadora correspondiente a una categoría.
 
 El modelo lineal a ajustar es
 
@@ -1309,7 +1345,7 @@ A =
 
 \subsection{\textbf{Problemas de colinealidad y mal condicionamiento}}
 
-La inclusión de un número elevado de variables dummy genera alta colinealidad en la matriz de diseño. El número de condición estimado para $A_{\mathrm{train}}$ es
+La inclusión de un número elevado de variables binarias indicadoras genera alta colinealidad en la matriz de diseño. El número de condición estimado para $A_{\mathrm{train}}$ es
 
 \[
 \mathrm{cond}(A_{\mathrm{train}}) \approx 2.6\times 10^{15},
@@ -1370,35 +1406,27 @@ lo que indica que el modelo captura una porción significativa de la variabilida
 
 \subsection{\textbf{Análisis de residuos e interpretación}}
 
-En la Figura~X comparamos los salarios reales frente a los salarios predichos para el conjunto de test. La mayoría de los puntos se alinean en torno a la diagonal $y=\hat{y}$, aunque se observan errores más grandes en los salarios más altos.
+En la Figura 1 comparamos los salarios reales frente a los salarios predichos para el conjunto de test. La mayoría de los puntos se alinean en torno a la diagonal $y=\hat{y}$, aunque se observan errores más grandes en los salarios más altos.
 
-% ---------------------------------------------------------
-% FIGURA DE PREDICCIÓN VS REAL (DESCOMENTAR AL AGREGAR)
-%
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.85\textwidth]{figuras/fig_prediccion_vs_real.png}
-% \caption{Comparación entre los valores reales y predichos de salario en el conjunto de test utilizando SVD.}
-% \label{fig:prediccion-vs-real}
-% \end{figure}
-% ---------------------------------------------------------
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=0.85\textwidth]{predicción_vs_real.png}
+        \caption{Comparación entre los valores reales y predichos de salario en el conjunto de test utilizando SVD.}
+        \label{fig:prediccion-vs-real}
+\end{figure}
 
-La Figura~Y muestra el histograma de los residuos en test, que se distribuyen aproximadamente de forma simétrica alrededor de cero, con colas moderadas. Esto sugiere que no hay violaciones graves del supuesto de homocedasticidad en este modelo lineal.
+La Figura 2 muestra el histograma de los residuos en test, que se distribuyen aproximadamente de forma simétrica alrededor de cero, con colas moderadas.
 
-% ---------------------------------------------------------
-% FIGURA DE HISTOGRAMA DE RESIDUOS (DESCOMENTAR AL AGREGAR)
-%
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.80\textwidth]{figuras/fig_hist_residuos.png}
-% \caption{Histograma de residuos del modelo obtenido mediante SVD en el conjunto de test.}
-% \label{fig:hist-residuos}
-% \end{figure}
-% ---------------------------------------------------------
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=0.80\textwidth]{histograma.png}
+        \caption{Histograma de residuos del modelo obtenido mediante SVD en el conjunto de test.}
+        \label{fig:hist-residuos}
+\end{figure}
 
 En cuanto a la interpretación de los parámetros, se observa que las variables numéricas \texttt{Age} y \texttt{Years\_of\_experience} presentan coeficientes positivos, lo cual indica que, en promedio, el salario aumenta con la edad y la experiencia laboral.
 
-Las variables dummy correspondientes al nivel educativo y al puesto de trabajo capturan diferencias sistemáticas entre grupos, reflejando que ciertos cargos y niveles académicos están asociados a salarios significativamente mayores.
+Las variables binarias indicadoras correspondientes al nivel educativo y al puesto de trabajo capturan diferencias sistemáticas entre grupos, reflejando que ciertos cargos y niveles académicos están asociados a salarios significativamente mayores.
 
 Finalmente, el mal condicionamiento de la matriz de diseño remarca la importancia de utilizar métodos numéricamente estables como SVD o descenso por gradiente en problemas reales con muchas variables categóricas, donde las ecuaciones normales estándar pueden volverse inestables o directamente inviables.
 

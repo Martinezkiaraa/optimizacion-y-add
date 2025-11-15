@@ -3,25 +3,25 @@
 \contentsline {subsection}{\numberline {1.1}\textbf {Escribir el sistema normal \(\bm {A}^{\mathsf T}\bm {A}\,\bm {\beta } \bm {=} \bm {A}^{\mathsf T}\bm {y}\)}}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}\textbf {Función en Python que resuelve el sistema}}{5}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}\textbf {Gráfico de datos y curva ajustada}}{6}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}\textbf {Cálculo del error cuadrático medio (MSE)}}{6}{subsection.1.4}%
-\contentsline {section}{\numberline {2}Interpretación mediante SVD}{7}{section.2}%
-\contentsline {subsection}{\numberline {2.1}\textbf {Cálculo de la SVD de \(\bm {A}\)}}{7}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}\textbf {Verificación numérica de la ortogonalidad de \(\bm {U}\)}}{8}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}\textbf {Comparación de soluciones obtenidas por SVD y por ecuaciones normales}}{9}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}\textbf {Mal condicionamiento y colinealidad}}{11}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Análisis cuadrático}{12}{section.3}%
-\contentsline {subsection}{\numberline {3.1}\textbf {Gráfico de \(\bm {Q}\bm {(}\bm {\beta _1}\bm {,}\,\bm {\beta _2}\bm {)}\) para \(\bm {\beta _0}\) fijo}}{12}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}\textbf {Convexidad de \(\bm {Q}\bm {(}\bm {\beta }\bm {)}\) y mínimo en la solución de mínimos cuadrados}}{13}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Optimización numérica}{13}{section.4}%
-\contentsline {subsection}{\numberline {4.1}\textbf {Descenso por gradiente para minimizar \(\bm {Q}\bm {(}\bm {\beta }\bm {)}\)}}{13}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}\textbf {Experimentos con tasas de aprendizaje y tolerancias}}{15}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}\textbf {(Opcional) Convergencia respecto de la solución por SVD}}{16}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Discusión y extensiones}{17}{section.5}%
-\contentsline {subsection}{\numberline {5.1}\textbf {Relación entre los distintos métodos de resolución}}{17}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}\textbf {Efecto de agregar términos cúbicos o ruido en el ajuste}}{18}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Aplicación a un caso real: predicción de salario}{20}{section.6}%
-\contentsline {subsection}{\numberline {6.1}\textbf {Descripción del conjunto de datos}}{20}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}\textbf {Preprocesamiento y formulación matricial}}{20}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}\textbf {Problemas de colinealidad y mal condicionamiento}}{21}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}\textbf {Ajuste mediante SVD y descenso por gradiente}}{21}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}\textbf {Análisis de residuos e interpretación}}{22}{subsection.6.5}%
+\contentsline {subsection}{\numberline {1.4}\textbf {Cálculo del error cuadrático medio (MSE)}}{7}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Interpretación mediante SVD}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}\textbf {Cálculo de la SVD de \(\bm {A}\)}}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}\textbf {Verificación numérica de la ortogonalidad de \(\bm {U}\)}}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}\textbf {Comparación de soluciones obtenidas por SVD y por ecuaciones normales}}{10}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}\textbf {Mal condicionamiento y colinealidad}}{12}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Análisis cuadrático}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}\textbf {Gráfico de \(\bm {Q}\bm {(}\bm {\beta _1}\bm {,}\,\bm {\beta _2}\bm {)}\) para \(\bm {\beta _0}\) fijo}}{13}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}\textbf {Convexidad de \(\bm {Q}\bm {(}\bm {\beta }\bm {)}\) y mínimo en la solución de mínimos cuadrados}}{15}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Optimización numérica}{15}{section.4}%
+\contentsline {subsection}{\numberline {4.1}\textbf {Descenso por gradiente para minimizar \(\bm {Q}\bm {(}\bm {\beta }\bm {)}\)}}{15}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}\textbf {Experimentos con tasas de aprendizaje y tolerancias}}{17}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}\textbf {(Opcional) Convergencia respecto de la solución por SVD}}{18}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Discusión y extensiones}{19}{section.5}%
+\contentsline {subsection}{\numberline {5.1}\textbf {Relación entre los distintos métodos de resolución}}{19}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}\textbf {Efecto de agregar términos cúbicos o ruido en el ajuste}}{20}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Aplicación a un caso real: predicción de salario}{22}{section.6}%
+\contentsline {subsection}{\numberline {6.1}\textbf {Descripción del conjunto de datos}}{22}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}\textbf {Preprocesamiento y formulación matricial}}{22}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}\textbf {Problemas de colinealidad y mal condicionamiento}}{23}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}\textbf {Ajuste mediante SVD y descenso por gradiente}}{23}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}\textbf {Análisis de residuos e interpretación}}{24}{subsection.6.5}%
